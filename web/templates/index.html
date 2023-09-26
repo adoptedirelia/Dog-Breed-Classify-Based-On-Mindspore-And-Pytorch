@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dog Breed Classifier</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 0;
+        }
+
+        #header {
+            text-align: center;
+            background-color: #3498db;
+            color: #fff;
+            padding: 1em 0;
+        }
+
+        #content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2em;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        #result {
+            text-align: center;
+            margin-top: 2em;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            margin-top: 1em;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        form {
+            margin-top: 2em;
+            text-align: center;
+        }
+
+        button {
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            padding: 0.5em 1em;
+            cursor: pointer;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div id="header">
+        <h1>Dog Breed Classifier</h1>
+    </div>
+    <div id="content">
+        <form action="/predict" method="post" enctype="multipart/form-data">
+            <input type="file" name="image" accept="image/*">
+            <button type="submit">Predict</button>
+        </form>
+        <div id="result">
+            {% if prediction %}
+            <h2>Prediction Result:</h2>
+            <p>{{ prediction }}</p>
+            <img src="{{ url_for('static', filename='temp_uploads/' + image_url) }}" alt="Predicted Dog Breed">
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,14 @@
+data:
+  devices: ['cpu']
+  ckpt: 
+  train: True
+  lr: 0.001
+  batch_size: 32
+  epoch: 5
+  emb_sz: 256
+  test_num: 5
+  ratio: 0.1
+  wd: 0.001
+  lr_period: 2
+  lr_decay: 0.9
+  model_save_path: './model/'
